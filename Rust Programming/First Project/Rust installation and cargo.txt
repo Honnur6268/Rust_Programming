@@ -1,0 +1,46 @@
+Install Rust
+================
+1. Go to Rust website - https://www.rust-lang.org/tools/install - Download rustup-init.exe (64-bit) Windows Subsystem for Linux
+2. cargo package manager (by default rust will install)
+
+Creating a new project
+=============================
+cargo new project-name
+cd project-name
+
+Build project
+===================
+cargo build (it will compile and builds the project within target directory)
+
+To build and run project
+=============================
+cargo run (it will compile, build and run the project)
+
+To install or add any dependency:
+=================================
+cargo add library-name
+
+For web framework: Actix Web Framework
+================
+Add Actix-web dependency
+
+cargo add actix-web
+
+To watch the changes in the src folder and run the server automatically:
+=========================================================================
+Install: cargo install cargo-watch. 
+Then, run command in terminal -> cargo watch -c -w src -x run
+
+cargo watch => Invokes cargo-watch tool, which listens for changes in your project files and automatically triggers commands as specified.
+-c => clears the terminal screen before each run
+-w  src => This flag specifies the directory to watch. Here, -w src means it’s only watching changes within the src folder, which is where your main Rust code is usually located. You can add 		multiple -w flags to watch other directories or files.
+-x run => execute the cargo run command whenever a change is detected.
+
+References
+=======================
+Rust Book: https://doc.rust-lang.org/book/
+Cargo Book: https://doc.rust-lang.org/cargo/getting-started/installation.html
+Standard Library: https://doc.rust-lang.org/std/index.html
+Actix: https://actix.rs/docs/getting-started
+Actix-Mongo Example: https://github.com/actix/examples/blob/master/databases/mongodb/src/main.rs
+cargo crates: https://crates.io/
