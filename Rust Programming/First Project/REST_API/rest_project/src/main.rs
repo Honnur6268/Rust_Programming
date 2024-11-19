@@ -39,7 +39,12 @@ async fn main() -> std::io::Result<()> {
 
     env_logger::init_from_env(env_logger::Env::default().default_filter_or("info"));
 
-    log::info!("Server started at http://localhost:8080");
+    let listen_port = match env::var("SERVER.PORT") {
+        Ok(v) => v.to_string(),
+        Err(_) => format!("Error loading SERVER.PORT"),
+    };
+
+    log::info!("Server started at http://localhost:{}", listen_port);
 
     HttpServer::new(move || {
         App::new()
@@ -56,7 +61,7 @@ async fn main() -> std::io::Result<()> {
             )
             .service(scope("/api/products").service(add_product))
     })
-    .bind(("localhost", 8080))?
+    .bind(("0.0.0.0", listen_port.parse().unwrap()))?
     .run()
     .await
 }
