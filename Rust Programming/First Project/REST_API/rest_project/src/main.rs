@@ -7,6 +7,8 @@ mod response;
 mod service;
 mod utils;
 
+use std::env;
+
 use actix_web::{
     get,
     middleware::Logger,
